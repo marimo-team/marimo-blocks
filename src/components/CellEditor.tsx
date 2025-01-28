@@ -86,16 +86,7 @@ export function CellEditor({
 					),
 				]}
 				readOnly={readOnly || isExecuting}
-				basicSetup={{
-					lineNumbers: true,
-					highlightActiveLineGutter: true,
-					highlightActiveLine: true,
-					foldGutter: true,
-					bracketMatching: true,
-					closeBrackets: true,
-					autocompletion: true,
-					indentOnInput: true,
-				}}
+				basicSetup={true}
 				{...editorProps}
 			/>
 		</section>
