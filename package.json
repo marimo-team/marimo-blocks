@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@marimo-team/blocks",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "React components for building your own Python notebook",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marimo-team/blocks"
+  },
+  "scripts": {
+    "prepare": "husky install && pnpm run build",
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check --write",
+    "format": "biome format --write",
+    "test": "vitest",
+    "demo": "vite build",
+    "build": "tsc",
+    "prepublishOnly": "pnpm run typecheck && pnpm run test && pnpm run build",
+    "release": "pnpm version",
+    "pre-commit": "lint-staged"
+  },
+  "keywords": [
+    "marimo",
+    "notebook",
+    "python",
+    "pyodide",
+    "react"
+  ],
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "dependencies": {
+    "@codemirror/lang-python": "^6.1.7",
+    "@codemirror/state": "^6.5.1",
+    "@codemirror/view": "^6.36.2",
+    "@uiw/react-codemirror": "^4.23.7",
+    "dompurify": "^3.2.3",
+    "jotai": "^2.11.1",
+    "node-fetch": "^3.3.2",
+    "pyodide": "^0.25.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@textea/json-viewer": "^4.0.1",
+    "@types/dompurify": "^3.2.0",
+    "@types/node": "^22.12.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "2.1.8",
+    "husky": "^9.1.7",
+    "jsdom": "^25.0.1",
+    "lint-staged": "^15.4.3",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.14",
+    "vitest": "^2.1.8"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "module": "./dist/index.js",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "biome check --write",
+      "biome format --write",
+      "vitest related --run"
+    ]
+  }
+}
