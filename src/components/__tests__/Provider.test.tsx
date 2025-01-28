@@ -10,7 +10,7 @@ vi.mock("pyodide", async (importOriginal) => ({
 		loadPackage: vi.fn(),
 		runPython: vi.fn(),
 		FS: {
-			mkdir: vi.fn(),
+			mkdirTree: vi.fn(),
 			readFile: vi.fn(),
 			writeFile: vi.fn(),
 		},

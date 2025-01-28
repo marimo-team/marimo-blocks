@@ -1,7 +1,7 @@
 import type { PyodideInterface } from "pyodide";
 
 export async function initUtils(pyodide: PyodideInterface) {
-	pyodide.FS.mkdir("/marimo");
+	pyodide.FS.mkdirTree("/marimo");
 	pyodide.FS.writeFile("/marimo/mime_utils.py", mime_utils);
 
 	// Add python to Python path
