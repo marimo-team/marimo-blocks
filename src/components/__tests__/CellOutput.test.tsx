@@ -1,16 +1,16 @@
 import { render, screen } from "@testing-library/react";
-import { createStore, Provider } from "jotai";
-import { MIME_TYPES } from "../../types/mime";
-import { CellOutput, convertToMimeOutput } from "../CellOutput";
-import { PyodideInterface } from "pyodide";
-import { vi, describe, it, expect, Mocked, beforeAll } from "vitest";
+import { Provider, createStore } from "jotai";
+import type { PyodideInterface } from "pyodide";
+import { type Mocked, beforeAll, describe, expect, it, vi } from "vitest";
 import { CellOutputAtoms } from "../../state";
+import { MIME_TYPES } from "../../types/mime";
 import { logger } from "../../utils/logger";
+import { CellOutput, convertToMimeOutput } from "../CellOutput";
 
 // Mock the useMimeRenderer hook
 vi.mock("../hooks/useMimeRenderer", () => ({
 	useMimeRenderer: () => ({
-		renderOutput: (output: any) => output.data,
+		renderOutput: (output: { data: unknown }) => output.data,
 	}),
 }));
 
